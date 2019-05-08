@@ -13,7 +13,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 
 
 ### Association
@@ -37,7 +37,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, foreign_key: true|
+|add_index :users, :name|string|null: false|
 
 
 ### Association
