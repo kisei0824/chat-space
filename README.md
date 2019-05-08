@@ -9,7 +9,7 @@
 - belongs_to :group
 - belongs_to :user
 
-## groupテーブル
+## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
