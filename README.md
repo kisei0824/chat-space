@@ -2,8 +2,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -13,37 +13,34 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-|body|text|null: false, foreign_key: true|
-|image|string|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
+
 
 ### Association
-- has_many :messages, through: :members
+- has_many :messages
   has_many :users, through: :members
+  has_many:members
 
 ## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-|body|text|null: false, foreign_key: true|
-|image|string|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
+|body|text|
+|image|string|
 
 ### Association
-- has_many :group, through: :members
+- belongs_to :group
   has_many :users, through: :members
 ## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-|body|text|null: false, foreign_key: true|
-|image|string|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
+
 
 ### Association
 - has_many :group, through: :members
-  has_many :messages, through: :members
-  has_many :group, through: :members
+  has_many :messages
+  has_many:members
