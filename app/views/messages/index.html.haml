@@ -17,7 +17,7 @@
             メンバー名
       .right-header
         .right-header__button
-          %a{href:''}Edit
+        = link_to "Edit", :back, class: 'btn'
     .messages
       = render @messages
       .message

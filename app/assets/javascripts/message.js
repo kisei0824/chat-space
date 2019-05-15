@@ -1,7 +1,6 @@
 function buildHTML(message){
-  if ( message.image ) {
-    var html =
-     `<div class="message" data-message-id=${message.id}>
+  var imagehtml = message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`
+    var html =`<div class="message>
         <div class="upper-message">
           <div class="upper-message__user-name">
             ${message.user_name}
@@ -14,30 +13,12 @@ function buildHTML(message){
           <p class="lower-message__content">
             ${message.content}
           </p>
-        </div>
-        <asset_path src=${message.image} >
-      </div>`
-    return html;
-  } else {
-    var html =
-     `<div class="message" data-message-id=${message.id}>
-        <div class="upper-message">
-          <div class="upper-message__user-name">
-            ${message.user_name}
-          </div>
-          <div class="upper-message__date">
-            ${message.date}
-          </div>
-        </div>
-        <div class="lower-message">
-          <p class="lower-message__content">
-            ${message.content}
-          </p>
+          ${imegehtml}
         </div>
       </div>`
     return html;
-  };
-}
+  } 
+
 $('.js-form').on('submit', function(){
 e.preventDefault();
 var formData = new FormData(this);
