@@ -1,3 +1,4 @@
+$(function() {
 $(document).on('turbolinks:load', function(){
  function buildHTML(message){
   var img = message.image.url ? `<img src= ${ message.image.url }>` : "";
@@ -7,7 +8,7 @@ $(document).on('turbolinks:load', function(){
             ${message.user_name}
           </div>
           <div class="upper-message__date">
-            ${message.date}
+            ${message.created_at}
           </div>
         </div>
         <div class="lower-message">
@@ -58,8 +59,8 @@ var reloadMessages = setInterval(function() {
       data.forEach(function(message) {
         var html = buildHTML(message);
         $('.messages').append(html);
+        $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
       });
-      $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
     })
     .fail(function() {
       alert('自動更新に失敗しました');
@@ -68,4 +69,5 @@ var reloadMessages = setInterval(function() {
     clearInterval(reloadMessages);
   }
 }, 5000 );
+});
 });
