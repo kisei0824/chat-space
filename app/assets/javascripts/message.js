@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function(){
     return html;
   } 
 
-$('.js-form').on('submit', function(){
+$('.new_message').on('submit', function(e){
 e.preventDefault();
 var formData = new FormData(this);
 var url = $(this).attr('action')
@@ -34,9 +34,10 @@ $.ajax({
   contentType: false
 })
  .done(function(data){
+   
    var html = buildHTML(data);
    $('.messages').append(html);
-   $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');   
+   $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast')  
    $('form')[0].reset();
  })
   .fail(function(){
@@ -59,7 +60,7 @@ var reloadMessages = setInterval(function() {
       data.forEach(function(message) {
         var html = buildHTML(message);
         $('.messages').append(html);
-        $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight}, "fast");
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight }, 'fast')
       });
     })
     .fail(function() {
