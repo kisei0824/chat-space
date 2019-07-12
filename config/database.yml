@@ -49,8 +49,10 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
-  database: db_production
+  encoding: unicode
+  pool: 5
   # database: chat-space_production
   # username: root
   # password: <%= ENV['DATABASE_PASSWORD'] %>
